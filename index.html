@@ -14,8 +14,8 @@
     <meta name="copyright" content="zhizhiwuwu" />
     <meta name="author" content="zhizhiwuwu" />
     <meta name="robots" content="all" />
-    <meta name="og:title" content="zhizhiwuwu" />
     <title>大雾</title>
+    <link rel="manifest" href="seochecker-manifest-1431.json" />
     <style>
       body {
         margin: 0;
@@ -71,5 +71,12 @@
       <p style="text-align: center">我的网站——歌曲大雾的歌词</p>
       <a href="https://zhizhiwuwu.com/">友情链接</a>
     </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("sw.js");
+        });
+      }
+    </script>
   </body>
 </html>
