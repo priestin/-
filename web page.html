@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("https://c-ssl.duitang.com/uploads/item/201802/15/20180215101109_seudm.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      p {
+        text-align: center;
+        font-size: 20px;
+        font-family: SimSun;
+        font-weight: bold;
+        margin-top: 40px;
+      }
+      .flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      #shurukuang {
+        border: 0;
+        border-bottom: 2px solid rgb(77, 81, 81);
+        padding: 4px 2px;
+        display: block;
+        background: 0;
+        line-height: 1.5;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s ease-in-out;
+        border-radius: 0;
+        color: rgb(89, 37, 201);
+        font-size: 2rem;
+        max-width: 90%;
+      }
+      #anniu {
+        margin-left: -30px;
+        margin-right: 10px;
+        color: aquamarine;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border: 1px solid bisque;
+      }
+      input::placeholder {
+        color: rgb(102, 211, 235);
+      }
+      input::-webkit-input-placeholder {
+        color: rgb(17, 227, 143);
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 400px; margin: auto; width: 80%; padding: 20px"></div>
+    <div style="height: 300px" class="flex">
+      <input placeholder="今日最重要的事？" id="shurukuang" />
+      <span id="anniu" onclick="change()">√</span>
+    </div>
+    <script>
+      let youshi = false;
+      function change() {
+        let anniu = document.getElementById("anniu");
+        let shurukuang = document.getElementById("shurukuang");
+
+        if (youshi) {
+          youshi = false;
+          anniu.innerText = "√";
+          shurukuang.style.borderBottomColor = "black";
+          shurukuang.value = "";
+          shurukuang.readonly = false;
+          window.localStorage.removeItem("shi");
+        } else {
+          youshi = true;
+          anniu.innerText = "X";
+          shurukuang.style.borderBottomColor = "transparent";
+          shurukuang.readonly = ture;
+          window.localStorage.setItem("shi", shurukuang.value);
+        }
+      }
+
+      let date = window.localStorage.getItem("shi");
+      if (date) {
+        document.getElementById("shurukuang").value = date;
+        change();
+      }
+    </script>
+  </body>
+</html>
